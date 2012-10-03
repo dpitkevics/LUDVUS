@@ -21,7 +21,7 @@ class LoginForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			// username and password are required
+			// email and password are required
 			array('username, password', 'required'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
@@ -46,11 +46,25 @@ class LoginForm extends CFormModel
 	 */
 	public function authenticate($attribute,$params)
 	{
+            /*
+            $email = $this->email;
+            $user = Users::model()->find('email=?', array($email));
+            if ($user === NULL)
+                $this->errorCode="Email is invalid";
+            else if(!$user->validatePassword($this->password, $this->email))
+                $this->errorCode="Password is invalid";
+            else {
+                $this->email = $user->email;
+                $this->errorCode=self::ERROR_NONE;
+            }
+            return !$this->errorCode;
+            */
+            
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
+				$this->addError('password','Incorrect email or password.');
 		}
 	}
 

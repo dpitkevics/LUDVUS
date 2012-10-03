@@ -30,7 +30,7 @@
                     <td id="login">
                         <form id="login_form" action="">
                             <div id="login_info">
-                                Jūs neesat pieslēdzies. (<a href="#">Pieslēgties</a>)<br/>
+                                Jūs neesat pieslēdzies. (<?php echo CHtml::link('Pieslēgties', array('/site/login')); ?>)<br/>
                             </div>
                             <div id="language_select">
                                 <select name="lang">
@@ -50,7 +50,11 @@
             </table>
 	</div><!-- header -->
 
-	<div id="mainmenu">
+	<div class="mainmenu">
+            <div class="menu_header">
+                Galvenā izvelne
+            </div>
+            <div class="menu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
@@ -60,15 +64,22 @@
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
+            </div>
 	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
+        <div id="main_content">
+            <?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+                        'homeLink'=>CHtml::link('Sākums', array('/site/index')),
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
-	<?php endif?>
-
-	<?php echo $content; ?>
-        <div id="mainmenu">
+            <?php endif?>
+            <?php echo $content; ?>
+        </div>
+        <div class="mainmenu">
+            <div class="menu_header">
+                Galvenā izvelne
+            </div>
+            <div class="menu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
@@ -78,13 +89,13 @@
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
+            </div>
 	</div><!-- mainmenu -->
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+        Copyright &copy; LUDVUS izstrādātāji, 2012.
+        <?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 
 </div><!-- page -->

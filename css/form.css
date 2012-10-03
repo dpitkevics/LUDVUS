@@ -55,9 +55,13 @@ div.form fieldset
 
 div.form label
 {
-	font-weight: bold;
-	font-size: 0.9em;
-	display: block;
+    font-weight: bold;
+    font-size: 0.9em;
+    display: block;
+    width: 100px;
+    float: left;
+    padding-left: 5px;
+    padding-top: 5px;
 }
 
 div.form .row
